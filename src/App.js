@@ -1,24 +1,19 @@
-import logo from './logo.svg';
+import { createContext, useContext, useState } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { getRoutes } from "./navigation/routes";
+
 import './App.css';
 
+export const AuthContext = createContext(null);
+
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const routes = getRoutes(isAuth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{isAuth, setIsAuth}}>
+      <RouterProvider router={routes} />
+    </AuthContext.Provider>
   );
 }
 
