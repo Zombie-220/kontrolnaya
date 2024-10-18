@@ -4,12 +4,14 @@ import { ErrorPage } from "./errorPage";
 import { Layout } from "./layout";
 import { Auth } from "../pages/auth";
 import { Register } from "../pages/register";
+import { Profile } from "../pages/profile";
+import { Main } from "../pages/main";
 
 const authPages = [
-    {
-      path: "/profile",
-      Component: Profile
-    },
+  {
+    path: "/profile",
+    Component: Profile
+  },
 ];
 
 const notAuthPages = [

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../App";
 import { ValidateInput } from "../../components/ValidateInput";
@@ -34,10 +33,6 @@ export const Register = () => {
         <div className="register">
             <div className="register__headerBackground" />
             <div className="register__wrapper">
-                <div className="register__wrapper__header">
-                    <button className="register__wrapper__header__signup">Регистрация</button>
-                    <Link to={'/auth'} className="register__wrapper__header__login">Войти</Link>
-                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ValidateInput 
                         textLabel={"Имя пользователя"}

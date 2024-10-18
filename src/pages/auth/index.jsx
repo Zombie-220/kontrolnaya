@@ -2,7 +2,6 @@ import { useContext } from "react";
 import React, { useState } from "react";
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { ValidateInput } from "../../components/ValidateInput";
 import { useForm } from "react-hook-form";
 
@@ -28,10 +27,6 @@ export const Auth = () => {
         <div className="auth">
             <div className="auth__headerBackground" />
             <div className="auth__wrapper">
-                <div className="auth__wrapper__header">
-                    <button className="auth__wrapper__header__login">Войти</button>
-                    <Link to={'/register'} className="auth__wrapper__header__signup">Регистрация</Link>
-                </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <ValidateInput
                         textLabel={"Имя пользователя"}
