@@ -12,6 +12,7 @@ export const Header = () => {
             {!isAuth && (<Link to='/register'>register</Link>)}
             {isAuth && (<Link to='/profile'>profile</Link>)}
             {isAuth && (<button onClick={()=>{setIsAuth(false)}}>quit</button>)}
+            <Link to='/list'>list</Link>
         </div>
     );
 };

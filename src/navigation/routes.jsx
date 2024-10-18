@@ -6,6 +6,7 @@ import { Auth } from "../pages/auth";
 import { Register } from "../pages/register";
 import { Profile } from "../pages/profile";
 import { Main } from "../pages/main";
+import { PageList } from "../pages/ListPages";
 
 const authPages = [
   {
@@ -34,6 +35,10 @@ export const getRoutes = (isAuth) => {
         {
           path: "/",
           Component: Main,
+        },
+        {
+          path: "/list",
+          Component: PageList
         },
 
         ...(isAuth ? authPages : notAuthPages),
