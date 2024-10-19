@@ -1,78 +1,104 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../App";
 import { ValidateInput } from "../../components/ValidateInput";
 import { useNavigate } from "react-router-dom";
 
+import registerIMG from '../../assets/images/registerIMG.svg';
+import register_plane from '../../assets/images/register-plane.svg'
+import './style.scss';
+
 export const Register = () => {
-    const { isAuth, setIsAuth } = useContext(AuthContext);
-    const [userName, setuserName] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
-    const [againUserPassword, setAgainUserPassword] = useState('');
-    const [isRegistrationError, setIsRegistrationError] = useState(false);
+    const [firsName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [middleName, setMiddleName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
 
     function onSubmit() {
-        if (userPassword === againUserPassword) {
-            setIsRegistrationError(false);
-            setIsAuth(true);
-            navigate('/')
-            localStorage.setItem("user", JSON.stringify({
-                "name": userName,
-                "password": userPassword
-            }))
-        }
-        else { setIsRegistrationError(true); }
+        navigate('/auth')
+        localStorage.setItem("user", JSON.stringify({
+            "firstName": firsName,
+            "lastName": lastName,
+            "middleName": middleName,
+            "phone": phone,
+            "email": email,
+            "password": password
+        }))
     };
 
     return (
-        <div className="register">
-            <div className="register__headerBackground" />
-            <div className="register__wrapper">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <ValidateInput 
-                        textLabel={"Имя пользователя"}
-                        errors={errors}
-                        name={"userName"}
-                        register={register}
-                        validate={{ required: true }}
-                        type={"text"}
-                        changeValue={(elem) => { setuserName(elem.target.value) }}
-                    />
-                    <ValidateInput 
-                        textLabel={"E-mail"}
-                        errors={errors}
-                        name={"e-mail"}
-                        register={register}
-                        validate={{ required: true }}
-                        type={"text"}
-                        changeValue={(elem) => { setUserEmail(elem.target.value) }}
-                    />
-                    <ValidateInput 
-                        textLabel={"Пароль"}
-                        errors={errors}
-                        name={"password1"}
-                        register={register}
-                        validate={{ required: true }}
-                        type={"password"}
-                        changeValue={(elem) => { setUserPassword(elem.target.value) }}
-                    />
-                    <ValidateInput 
-                        textLabel={"Подтвердите пароль"}
-                        errors={errors}
-                        name={"password2"}
-                        register={register}
-                        validate={{ required: true }}
-                        type={"password"}
-                        changeValue={(elem) => { setAgainUserPassword(elem.target.value) }}
-                    />
-                    {isRegistrationError && (<p className="register__wrapper__errorMessage">Пароли не совпадают</p>)}
-                    <button className="register__wrapper__enterButton">Регистрация</button>
-                </form>
+        <div className="register_wrapper">
+            <div className="register">
+                <h1 className="register__header">Register</h1>
+                <p className="register__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim facilisi elementum commodo ipsum. Aenean aenean adipiscing lect</p>
+                <div className="register__wrapper">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <ValidateInput 
+                            textLabel={"First name"}
+                            errors={errors}
+                            name={"firstName"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"text"}
+                            changeValue={(elem) => { setFirstName(elem.target.value) }}
+                        />
+                        <ValidateInput 
+                            textLabel={"Last name"}
+                            errors={errors}
+                            name={"lastName"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"text"}
+                            changeValue={(elem) => { setLastName(elem.target.value) }}
+                        />
+                        <ValidateInput 
+                            textLabel={"Middle name"}
+                            errors={errors}
+                            name={"middleName"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"text"}
+                            changeValue={(elem) => { setMiddleName(elem.target.value) }}
+                        />
+                        <ValidateInput 
+                            textLabel={"Phone"}
+                            errors={errors}
+                            name={"phone"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"text"}
+                            changeValue={(elem) => { setPhone(elem.target.value) }}
+                        />
+                        <ValidateInput 
+                            textLabel={"E-mail"}
+                            errors={errors}
+                            name={"email"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"text"}
+                            changeValue={(elem) => { setEmail(elem.target.value) }}
+                        />
+                        <ValidateInput 
+                            textLabel={"Password"}
+                            errors={errors}
+                            name={"password"}
+                            register={register}
+                            validate={{ required: true }}
+                            type={"password"}
+                            changeValue={(elem) => { setPassword(elem.target.value) }}
+                        />
+                        <button className="register__wrapper__enterButton">Registration</button>
+                    </form>
+                </div>
+            </div>
+            <div className="register_image">
+                <img src={registerIMG} alt="register-img" />
+                <div className="register__plane"><img src={register_plane} alt="register_plane" /></div>
             </div>
         </div>
     );

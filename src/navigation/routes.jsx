@@ -4,27 +4,7 @@ import { ErrorPage } from "./errorPage";
 import { Layout } from "./layout";
 import { Auth } from "../pages/auth";
 import { Register } from "../pages/register";
-import { Profile } from "../pages/profile";
-import { Main } from "../pages/main";
 import { PageList } from "../pages/ListPages";
-
-const authPages = [
-  {
-    path: "/profile",
-    Component: Profile
-  },
-];
-
-const notAuthPages = [
-    {
-      path: "/auth",
-      Component: Auth
-    },
-    {
-      path: "/register",
-      Component: Register
-    }
-];
 
 export const getRoutes = (isAuth) => {
   return createBrowserRouter([
@@ -34,14 +14,16 @@ export const getRoutes = (isAuth) => {
       children: [
         {
           path: "/",
-          Component: Main,
+          Component: Register,
         },
         {
           path: "/list",
           Component: PageList
         },
-
-        ...(isAuth ? authPages : notAuthPages),
+        {
+          path: "/auth",
+          Component: Auth
+        }
       ],
     },
   ]);

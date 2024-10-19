@@ -1,0 +1,21 @@
+.validateInput {
+    margin-bottom: 14px;
+    &__input {
+        width: 415px;
+        height: 15px;
+        border: 1px solid #EAECF5;
+        padding: 20px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    &__error {
+        color: #f00;
+    }
+}
+
+input::placeholder {
+    color: #939393;
+    font-family: "Poppins";
+}
+
+.input_error { border-color: #f00; }

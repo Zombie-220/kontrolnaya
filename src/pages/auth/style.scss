@@ -1,0 +1,57 @@
+.auth {
+    padding-left: 160px;
+    padding-top: 150px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__header {
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 50px;
+        margin: 0px;
+        font-size: "ABeeZee";
+    }
+    &__text {
+        color: #939393;
+        font-size: 14px;
+        line-height: 28px;
+        font-weight: 400;
+        margin: 21px 0px;
+        font-family: "Poppins";
+    }
+    &__wrapper {
+        &__enterButton {
+            width: 190px;
+            height: 55px;
+            background-color: #735CFF;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            border: none;
+            border-radius: 5px;
+            font-family: "Poppins";
+        }
+    }
+    &_image {
+        margin-top: 100px;
+        width: 640px;
+        height: 730px;
+    }
+    &__plane {
+        background-color: #735CFF;
+        border-radius: 50%;
+        border: none;
+        padding: 27px 21px;
+        width: 60px;
+        height: 70px;
+        position: relative;
+        top: -400px;
+        left: -55px;
+    }
+    &_wrapper {
+        background-color: #F9FAFE;
+    }
+}
+
+.auth_wrapper { display: flex; }
