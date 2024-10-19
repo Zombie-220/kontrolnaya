@@ -13,12 +13,12 @@ export const Auth = () => {
     const { isAuth, setIsAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = () => {
+    const onSubmit = (data) => {
         var userData = JSON.parse(localStorage.getItem('user'))
+        const {email, password} = data
+
         if (userData) {
             if (userData.email == email && userData.password == password) {
                 setIsAuth(true);
@@ -27,6 +27,7 @@ export const Auth = () => {
                 console.log("x")
             }
         } else {
+            navigate('/')
             console.log("база пуста")
         }
     }
@@ -41,11 +42,10 @@ export const Auth = () => {
                         <ValidateInput
                             textLabel={"E-mail"}
                             errors={errors}
-                            name={"name"}
+                            name={"email"}
                             register={register}
                             validate={{ required: true }}
                             type={"text"}
-                            changeValue={(elem) => { setEmail(elem.target.value) }}
                             />
                         <ValidateInput
                             textLabel={"Password"}
@@ -54,7 +54,6 @@ export const Auth = () => {
                             register={register}
                             validate={{ required: true }}
                             type={"password"}
-                            changeValue={(elem) => { setPassword(elem.target.value) }}
                             />
                         <button className="auth__wrapper__enterButton">Auth</button>
                     </form>
